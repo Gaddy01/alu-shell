@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "##\nUser Database \n## \n$(cat /etc/passwd) \n## \nHost database \n## \n$(cat /etc/hosts)"
+echo -e "$(cat /etc/passwd) \n$(cat /etc/hosts)"
