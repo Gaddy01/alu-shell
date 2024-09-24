@@ -1,2 +1,2 @@
 #!/bin/bash
-if [ "stat --format="%N" hello" == "guillaume" ] (chown vincent: hello)
+if [ "stat --format="%N" hello" == "guillaume" ] (sudo chown vincent hello)
