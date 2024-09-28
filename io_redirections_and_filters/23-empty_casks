@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -a | find . -type f -empty -or -type d -empty | tr "/." "\n "
+ls -a | find . -type f -empty -printf "%f\n" -or -type d -empty -printf "%f\n"
