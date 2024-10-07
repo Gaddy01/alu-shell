@@ -11,15 +11,16 @@ if [ -e $file ]; then
 		fi
 		echo "school is a regular file"
 	fi
-	if [ -d $file ]; then
-		cd $file
-		if [ "$(ls | wc -l)" -eq 0 ]; then
-			echo "school file is empty"
-                else
-                        echo "school file is not empty"
-		fi
-		cd ..
-	fi
+	
+	#if [ -d $file ]; then
+		#cd $file
+		#if [ "$(ls | wc -l)" -eq 0 ]; then
+			#echo "school file is empty"
+                #else
+                        #echo "school file is not empty"
+		#fi
+		#cd ..
+	#fi
 else
 	echo "school file does not exist"
 fi
