@@ -3,7 +3,7 @@
 file="school"
 if [ -e $file ]; then
 	echo "school file exists"
-	if [ $file|wc == 0]; then
+	if [ cat $file|wc == 0]; then
 	       echo "school file is empty"
         else
 		echo "school file is not empty"		
