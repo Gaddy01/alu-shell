@@ -3,12 +3,12 @@
 file="school"
 if [ -e $file ]; then
 	echo "school file exists"
-	if [ cat $file|wc == 0]; then
+	if [ "$(wc -l < "$file")" -eq 0 ]; then
 	       echo "school file is empty"
         else
 		echo "school file is not empty"		
 	fi
-	if [ -f $file]; then
+	if [ -f $file ]; then
 		echo "school is a regular file"
 	fi
 else
