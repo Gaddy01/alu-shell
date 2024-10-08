@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Iterate over each directory in /proc that is a number (these are PIDs)
+for pid in /proc/[0-9]*; do
+    # Extract the PID from the path
+    pid=$(basename "$pid")
+    
+    # Check if the process name (stored in /proc/[PID]/comm) contains "bash"
+    if grep -q "bash" "/proc/$pid/comm" 2>/dev/null; then
+        # Display the PID and the process name
+        echo "$pid $(cat /proc/$pid/comm)"
+    fi
+done
