@@ -9,7 +9,7 @@ PID=$(pgrep -f "$PROCESS_NAME")
 # Check if the process is running
 if [[ -n "$PID" ]]; then
     # Stop the process using kill
-    kill "$PID"
+    kill -SIGTERM "$PID"
     # echo "Stopped the process: $PROCESS_NAME (PID: $PID)"
 else
     echo "Process '$PROCESS_NAME' is not running."
