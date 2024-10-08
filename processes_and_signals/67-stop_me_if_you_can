@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Name of the process to stop
+PROCESS_NAME="7-highlander"
+
+# Get the PID of the process
+PID=$(pgrep -f "$PROCESS_NAME")
+
+# Check if the process is running
+if [[ -n "$PID" ]]; then
+    # Stop the process using kill
+    kill -SIGTERM "$PID"
+    # echo "Stopped the process: $PROCESS_NAME (PID: $PID)"
+else
+    echo "Process '$PROCESS_NAME' is not running."
+fi
