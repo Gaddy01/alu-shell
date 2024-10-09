@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+#
+
+handle_start() {
+	source ./manage_my_process
+	PROCESS_NAME="manage_my_process"
+        PID=$(pgrep -f "$PROCESS_NAME")
+   
+	echo "$PID" > /var/run/my_process.pid
+	echo "manage_my_process started"
+}
+
+handle_stop() {
+	PROCESS_NAME="manage_my_process"
+	PID=$(pgrep -f "$PROCESS_NAME")
+	kill -SIGTERM "$PID"
+
+	rm /var/run/my_process.pid
+	echo "manage_my_process stopped"	
+}
+
+handle_restart() {
+	PROCESS_NAME="manage_my_process"
+        PID=$(pgrep -f "$PROCESS_NAME")
+        kill -SIGTERM "$PID"   
+     	rm /var/run/my_process.pid
+
+	source ./manage_my_process
+	PROCESS_NAME="manage_my_process"
+        PID=$(pgrep -f "$PROCESS_NAME")
+	echo "$PID" > /var/run/my_process.pid
+	echo "manage_my_process restarted"
+}
+
+handle_else() {
+	echo "Usage: manage_my_process {start|stop|restart}"
+}
+
+trap 'handle_start' start
+trap 'handle_stop' stop
+trap 'handle_restart' restart
+trap 'handle_else' !{start|stop|restart}
+
+
