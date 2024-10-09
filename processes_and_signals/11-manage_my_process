@@ -36,9 +36,14 @@ handle_else() {
 	echo "Usage: manage_my_process {start|stop|restart}"
 }
 
-trap 'handle_start' start
-trap 'handle_stop' stop
-trap 'handle_restart' restart
-trap 'handle_else' !{start|stop|restart}
+if [ "$1" == "stop" ]; then
+        handle_stop
+elif [ "$1" == "start" ]; then
+        handle_start
+elif [ "$1" == "restart" ]; then
+        handle_restart
+else
+        handle_else
+fi
 
 
