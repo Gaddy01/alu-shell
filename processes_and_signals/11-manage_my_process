@@ -2,7 +2,7 @@
 #
 
 handle_start() {
-	source ./manage_my_process
+	./manage_my_process &
 	PROCESS_NAME="manage_my_process"
         PID=$(pgrep -f "$PROCESS_NAME")
    
@@ -13,7 +13,7 @@ handle_start() {
 handle_stop() {
 	PROCESS_NAME="manage_my_process"
 	PID=$(pgrep -f "$PROCESS_NAME")
-	kill -SIGTERM "$PID"
+	kill -SIGQUIT "$PID"
 
 	rm /var/run/my_process.pid
 	echo "manage_my_process stopped"	
@@ -22,10 +22,10 @@ handle_stop() {
 handle_restart() {
 	PROCESS_NAME="manage_my_process"
         PID=$(pgrep -f "$PROCESS_NAME")
-        kill -SIGTERM "$PID"   
+        kill -SIGQUIT "$PID"   
      	rm /var/run/my_process.pid
 
-	source ./manage_my_process
+	./manage_my_process &
 	PROCESS_NAME="manage_my_process"
         PID=$(pgrep -f "$PROCESS_NAME")
 	echo "$PID" > /var/run/my_process.pid
