@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-
+./manage_my_process
 handle_start() {
 	source ./manage_my_process
 	PROCESS_NAME="manage_my_process"
