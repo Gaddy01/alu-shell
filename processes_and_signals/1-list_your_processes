@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #
-ps -aux
+ps -auxf
 #ps -eH -o user,pid,ppid,start,tty,time,cmd
